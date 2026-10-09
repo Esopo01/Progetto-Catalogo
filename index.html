@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Catalogo prodotti</title>
-  <meta name="description" content="Catalogo digitale dei prodotti: integratori alimentari, dispositivi medici, alimenti a fini medici speciali e medicinali.">
+  <meta name="description" content="Catalogo digitale dei prodotti: integratori alimentari, dispositivi medici, alimenti a fini medici speciali e medicinali senza obbligo di prescrizione. Riservato agli operatori sanitari.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f4e9c'/%3E%3Cpath d='M9 16h14M16 9v14' stroke='%23fff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="testata-azioni">
-        <label class="interruttore" title="Mostra le note di lavorazione e i campi da verificare">
+        <label class="interruttore" id="interruttore-revisione" hidden title="Mostra le note di lavorazione e i campi da verificare">
           <input type="checkbox" id="toggle-revisione">
           <span>Modalità revisione</span>
         </label>
@@ -33,7 +33,8 @@
   <main class="contenitore">
     <section class="intro" aria-labelledby="intro-titolo">
       <h1 id="intro-titolo">I nostri prodotti</h1>
-      <p id="intro-testo">Integratori alimentari, dispositivi medici, alimenti a fini medici speciali e medicinali di automedicazione.</p>
+      <p id="intro-testo">Integratori alimentari, dispositivi medici, alimenti a fini medici speciali e medicinali senza obbligo di prescrizione.</p>
+      <p class="intro-aiuto">Seleziona un prodotto per aprire la scheda completa.</p>
     </section>
 
     <section class="filtri" aria-label="Filtri">
@@ -74,17 +75,21 @@
   <footer class="pie">
     <div class="contenitore">
       <p id="pie-testo"></p>
-      <p class="pie-nota">Le informazioni riportate hanno scopo informativo e non sostituiscono il parere del medico o del farmacista. Gli integratori alimentari non vanno intesi come sostituti di una dieta variata ed equilibrata e di uno stile di vita sano.</p>
+      <p class="pie-nota">Catalogo riservato agli operatori sanitari: non costituisce pubblicità al pubblico. Le informazioni riportate hanno scopo informativo e non sostituiscono il parere del medico o del farmacista. Gli integratori alimentari non vanno intesi come sostituti di una dieta variata ed equilibrata e di uno stile di vita sano.</p>
     </div>
   </footer>
 
   <dialog id="dettaglio" class="dettaglio" aria-labelledby="dettaglio-titolo">
     <div class="dettaglio-interno">
       <button type="button" class="chiudi" id="chiudi" aria-label="Chiudi scheda prodotto">&times;</button>
-      <div id="dettaglio-contenuto"></div>
+      <div id="dettaglio-contenuto" class="dettaglio-contenuto"></div>
     </div>
   </dialog>
 
+  <script>
+    // Se data/prodotti.js contiene un errore di battitura, conserviamo il messaggio del browser per mostrarlo in pagina.
+    window.addEventListener('error', function (e) { if (e.message && !window.ERRORE_DATI) window.ERRORE_DATI = e.message + (e.lineno ? ' (riga ' + e.lineno + ')' : ''); });
+  </script>
   <script src="data/prodotti.js"></script>
   <script src="js/app.js"></script>
 </body>
