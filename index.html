@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catalogo prodotti</title>
+  <meta name="description" content="Catalogo digitale dei prodotti: integratori alimentari, dispositivi medici, alimenti a fini medici speciali e medicinali.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f4e9c'/%3E%3Cpath d='M9 16h14M16 9v14' stroke='%23fff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="salta" href="#elenco">Vai all'elenco prodotti</a>
+
+  <header class="testata">
+    <div class="contenitore testata-riga">
+      <div class="marchio">
+        <span class="marchio-logo" aria-hidden="true">B</span>
+        <div>
+          <p class="marchio-nome" id="azienda-nome">Catalogo prodotti</p>
+          <p class="marchio-sotto" id="azienda-sotto">Catalogo digitale dei prodotti</p>
+        </div>
+      </div>
+      <div class="testata-azioni">
+        <label class="interruttore" title="Mostra le note di lavorazione e i campi da verificare">
+          <input type="checkbox" id="toggle-revisione">
+          <span>Modalità revisione</span>
+        </label>
+        <button type="button" class="pulsante pulsante-secondario" id="btn-stampa">Stampa / PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenitore">
+    <section class="intro" aria-labelledby="intro-titolo">
+      <h1 id="intro-titolo">I nostri prodotti</h1>
+      <p id="intro-testo">Integratori alimentari, dispositivi medici, alimenti a fini medici speciali e medicinali di automedicazione.</p>
+    </section>
+
+    <section class="filtri" aria-label="Filtri">
+      <div class="filtri-riga">
+        <div class="campo-ricerca">
+          <label for="ricerca" class="sr-only">Cerca un prodotto</label>
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" id="ricerca" placeholder="Cerca per nome, ingrediente, tipologia…" autocomplete="off">
+        </div>
+        <label class="campo-select">
+          <span>Stato</span>
+          <select id="filtro-stato">
+            <option value="">Tutti</option>
+            <option value="in_commercio">In commercio</option>
+            <option value="in_lancio">In lancio</option>
+          </select>
+        </label>
+        <label class="campo-select">
+          <span>Ordina</span>
+          <select id="ordina">
+            <option value="catalogo">Ordine catalogo</option>
+            <option value="nome">Nome A–Z</option>
+            <option value="anno">Anno di lancio</option>
+          </select>
+        </label>
+      </div>
+      <div class="chip-riga" id="chip-categorie" role="group" aria-label="Filtra per categoria"></div>
+      <p class="conteggio" id="conteggio" aria-live="polite"></p>
+    </section>
+
+    <section id="elenco" class="griglia" aria-label="Elenco prodotti"></section>
+
+    <p class="vuoto" id="vuoto" hidden>Nessun prodotto corrisponde ai filtri. <button type="button" class="collegamento" id="azzera">Azzera i filtri</button></p>
+
+    <section class="stampa-dettagli" id="stampa-dettagli" aria-hidden="true"></section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenitore">
+      <p id="pie-testo"></p>
+      <p class="pie-nota">Le informazioni riportate hanno scopo informativo e non sostituiscono il parere del medico o del farmacista. Gli integratori alimentari non vanno intesi come sostituti di una dieta variata ed equilibrata e di uno stile di vita sano.</p>
+    </div>
+  </footer>
+
+  <dialog id="dettaglio" class="dettaglio" aria-labelledby="dettaglio-titolo">
+    <div class="dettaglio-interno">
+      <button type="button" class="chiudi" id="chiudi" aria-label="Chiudi scheda prodotto">&times;</button>
+      <div id="dettaglio-contenuto"></div>
+    </div>
+  </dialog>
+
+  <script src="data/prodotti.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
