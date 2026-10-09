@@ -313,7 +313,7 @@
     else elDialog.setAttribute('open', '');
     elDettaglio.scrollTop = 0;
     $('chiudi').focus();
-    if (history.replaceState) history.replaceState(null, '', '#prodotto=' + encodeURIComponent(id));
+    try { history.replaceState(null, '', '#prodotto=' + encodeURIComponent(id)); } catch (err) { /* ignora */ }
   }
   function chiudi() {
     if (typeof elDialog.close === 'function' && elDialog.open) elDialog.close();
@@ -321,7 +321,7 @@
   }
   function dopoChiusura() {
     prodottoAperto = null;
-    if (history.replaceState && /#prodotto=/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
+    if (/#prodotto=/.test(location.hash)) { try { history.replaceState(null, '', location.pathname + location.search); } catch (err) { /* ignora */ } }
     if (ultimoFocus && ultimoFocus.focus && document.contains(ultimoFocus)) ultimoFocus.focus();
   }
   elDialog.addEventListener('close', dopoChiusura);
