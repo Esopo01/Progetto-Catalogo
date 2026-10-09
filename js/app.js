@@ -56,7 +56,8 @@
     return normalizza([
       p.nome, p.sottotitolo, p.claim, p.tipologia, nomeCategoria(p.categoria),
       lista(p.composizione).join(' '), lista(p.formati).join(' '),
-      lista(p.caratteristiche).join(' '), p.descrizione, lista(p.indicazioni).join(' ')
+      lista(p.caratteristiche).join(' '), p.descrizione, lista(p.indicazioni).join(' '),
+      lista(p.codici).join(' ')
     ].join(' '));
   }
   function debounce(fn, ms) {
@@ -211,6 +212,7 @@
     '</div>' +
     sezione('Composizione', ul(p.composizione)) +
     sezione('Formati e confezioni', ul(p.formati)) +
+    sezione('Codici', ul(p.codici)) +
     sezione('Indicazioni', paragrafi(p.indicazioni)) +
     sezione('Modo d’uso', paragrafi(p.modo_uso)) +
     sezione('Avvertenze', paragrafi(p.avvertenze)) +
@@ -282,6 +284,7 @@
         (p.descrizione ? paragrafi(p.descrizione) : '') +
         (lista(p.composizione).length ? '<h3>Composizione</h3>' + ul(p.composizione) : '') +
         (lista(p.formati).length ? '<h3>Formati</h3>' + ul(p.formati) : '') +
+        (lista(p.codici).length ? '<h3>Codici</h3><p>' + h(lista(p.codici).join(' · ')) + '</p>' : '') +
         (lista(p.caratteristiche).length ? '<h3>Caratteristiche</h3><p>' + h(lista(p.caratteristiche).join(' · ')) + '</p>' : '') +
         (lista(p.indicazioni).length ? '<h3>Indicazioni</h3>' + paragrafi(p.indicazioni) : '') +
         (lista(p.modo_uso).length ? '<h3>Modo d’uso</h3>' + paragrafi(p.modo_uso) : '') +

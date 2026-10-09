@@ -44,6 +44,7 @@ Tutti i dati stanno in `data/prodotti.js`. Ogni prodotto è un blocco come quest
   avvertenze: [],
   testi_slide: [],                   // paragrafi di approfondimento
   riferimenti: [],                   // bibliografia
+  codici: [],                        // es. "Paraf 943256659", "AIC 034966010"
   immagini: ["assets/img/prodotti/nuovo-prodotto.jpg"],
   fonti_web: [],                     // es. { url: "https://...", titolo: "...", ufficiale: true }
   pagina_scansione: null,
